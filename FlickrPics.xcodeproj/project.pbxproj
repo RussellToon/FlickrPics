@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4670D0EA22A6866F000BA0E2 /* TableRowCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4670D0E922A6866F000BA0E2 /* TableRowCell.swift */; };
 		469914F722A52BFF001F9377 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 469914F622A52BFF001F9377 /* AppDelegate.swift */; };
 		469914F922A52BFF001F9377 /* MasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 469914F822A52BFF001F9377 /* MasterViewController.swift */; };
 		469914FB22A52BFF001F9377 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 469914FA22A52BFF001F9377 /* DetailViewController.swift */; };
@@ -28,6 +29,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		4670D0E922A6866F000BA0E2 /* TableRowCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableRowCell.swift; sourceTree = "<group>"; };
 		469914F322A52BFF001F9377 /* FlickrPics.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FlickrPics.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		469914F622A52BFF001F9377 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		469914F822A52BFF001F9377 /* MasterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterViewController.swift; sourceTree = "<group>"; };
@@ -89,6 +91,7 @@
 				4699150122A52C01001F9377 /* LaunchScreen.storyboard */,
 				4699150422A52C01001F9377 /* Info.plist */,
 				4699151822A55A77001F9377 /* RecentsFetcher.swift */,
+				4670D0E922A6866F000BA0E2 /* TableRowCell.swift */,
 			);
 			path = FlickrPics;
 			sourceTree = "<group>";
@@ -205,6 +208,7 @@
 			files = (
 				4699151922A55A77001F9377 /* RecentsFetcher.swift in Sources */,
 				469914FB22A52BFF001F9377 /* DetailViewController.swift in Sources */,
+				4670D0EA22A6866F000BA0E2 /* TableRowCell.swift in Sources */,
 				469914F922A52BFF001F9377 /* MasterViewController.swift in Sources */,
 				469914F722A52BFF001F9377 /* AppDelegate.swift in Sources */,
 			);

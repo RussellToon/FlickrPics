@@ -9,6 +9,7 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var detailDescriptionLabel: UILabel!
     @IBOutlet weak var imageView: UIImageView!
 
+    let imageFetcher = ImageFetcher()
 
     func configureView() {
         // Update the user interface for the detail item.
@@ -18,7 +19,7 @@ class DetailViewController: UIViewController {
                 guard let url = URL(string: photo.fullSizeUrl) else {
                     return
                 }
-                downloadImage(from: url)
+                imageFetcher.downloadImage(from: url, for: imageView)
             }
         }
     }
@@ -36,12 +37,15 @@ class DetailViewController: UIViewController {
         }
     }
 
+}
 
-    func downloadImage(from url: URL) {
+struct ImageFetcher {
+
+    func downloadImage(from url: URL, for imageView: UIImageView) {
         getData(from: url) { data, response, error in
             guard let data = data, error == nil else { return }
             DispatchQueue.main.async() {
-                self.imageView.image = UIImage(data: data)
+                imageView.image = UIImage(data: data)
             }
         }
     }
@@ -49,5 +53,5 @@ class DetailViewController: UIViewController {
     func getData(from url: URL, completion: @escaping (Data?, URLResponse?, Error?) -> ()) {
         URLSession.shared.dataTask(with: url, completionHandler: completion).resume()
     }
-}
 
+}

@@ -6,8 +6,10 @@ import UIKit
 
 class MasterViewController: UITableViewController {
 
-    var detailViewController: DetailViewController? = nil
-    var photos = [Photo]()
+    fileprivate var detailViewController: DetailViewController? = nil
+    fileprivate var photos = [Photo]()
+    fileprivate let imageFetcher = ImageFetcher()
+
 
     fileprivate let recentsFetcher = RecentsFetcher()
 
@@ -53,25 +55,21 @@ class MasterViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
+
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! TableRowCell
 
         let photo = photos[indexPath.row]
         cell.textLabel!.text = photo.title
+        //cell.thumbnail.image =
+        if let url = URL(string: photo.thumbnailUrl) {
+            imageFetcher.downloadImage(from: url, for: cell.thumbnail)
+        }
         return cell
     }
 
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         return false
     }
-
-//    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-//        if editingStyle == .delete {
-//            objects.remove(at: indexPath.row)
-//            tableView.deleteRows(at: [indexPath], with: .fade)
-//        } else if editingStyle == .insert {
-//            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view.
-//        }
-//    }
 
 
     // MARK: - Fetch data
