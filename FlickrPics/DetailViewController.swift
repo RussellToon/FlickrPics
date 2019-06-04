@@ -1,9 +1,5 @@
 //
-//  DetailViewController.swift
-//  FlickrPics
-//
-//  Created by Russell Toon on 03/06/2019.
-//  Copyright © 2019 Russell Toon. All rights reserved.
+//  Copyright © 2019 News UK. All rights reserved.
 //
 
 import UIKit
@@ -11,13 +7,18 @@ import UIKit
 class DetailViewController: UIViewController {
 
     @IBOutlet weak var detailDescriptionLabel: UILabel!
+    @IBOutlet weak var imageView: UIImageView!
 
 
     func configureView() {
         // Update the user interface for the detail item.
-        if let detail = detailItem {
+        if let photo = detailItem {
             if let label = detailDescriptionLabel {
-                label.text = detail.description
+                label.text = photo.title
+                guard let url = URL(string: photo.fullSizeUrl) else {
+                    return
+                }
+                downloadImage(from: url)
             }
         }
     }
@@ -28,7 +29,7 @@ class DetailViewController: UIViewController {
         configureView()
     }
 
-    var detailItem: String? {
+    var detailItem: Photo? {
         didSet {
             // Update the view.
             configureView()
@@ -36,5 +37,17 @@ class DetailViewController: UIViewController {
     }
 
 
+    func downloadImage(from url: URL) {
+        getData(from: url) { data, response, error in
+            guard let data = data, error == nil else { return }
+            DispatchQueue.main.async() {
+                self.imageView.image = UIImage(data: data)
+            }
+        }
+    }
+
+    func getData(from url: URL, completion: @escaping (Data?, URLResponse?, Error?) -> ()) {
+        URLSession.shared.dataTask(with: url, completionHandler: completion).resume()
+    }
 }
 

@@ -1,5 +1,5 @@
 //
-//  Copyright © 2019 NewsUK. All rights reserved.
+//  Copyright © 2019 News UK. All rights reserved.
 //
 
 import Foundation

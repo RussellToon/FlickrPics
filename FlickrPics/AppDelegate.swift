@@ -1,9 +1,5 @@
 //
-//  AppDelegate.swift
-//  FlickrPics
-//
-//  Created by Russell Toon on 03/06/2019.
-//  Copyright © 2019 Russell Toon. All rights reserved.
+//  Copyright © 2019 News UK. All rights reserved.
 //
 
 import UIKit
