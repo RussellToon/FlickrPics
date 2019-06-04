@@ -7,7 +7,9 @@ import UIKit
 class MasterViewController: UITableViewController {
 
     var detailViewController: DetailViewController? = nil
-    var objects = [Any]()
+    var photos = [Photo]()
+
+    fileprivate let recentsFetcher = RecentsFetcher()
 
 
     override func viewDidLoad() {
@@ -17,6 +19,7 @@ class MasterViewController: UITableViewController {
             let controllers = split.viewControllers
             detailViewController = (controllers[controllers.count-1] as! UINavigationController).topViewController as? DetailViewController
         }
+        fetchRecents()
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -30,9 +33,9 @@ class MasterViewController: UITableViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showDetail" {
             if let indexPath = tableView.indexPathForSelectedRow {
-                let object = objects[indexPath.row] as! NSDate
+                let photo = photos[indexPath.row]
                 let controller = (segue.destination as! UINavigationController).topViewController as! DetailViewController
-                controller.detailItem = object
+                controller.detailItem = photo.title
                 controller.navigationItem.leftBarButtonItem = splitViewController?.displayModeButtonItem
                 controller.navigationItem.leftItemsSupplementBackButton = true
             }
@@ -46,14 +49,14 @@ class MasterViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return objects.count
+        return photos.count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
 
-        let object = objects[indexPath.row] as! NSDate
-        cell.textLabel!.text = object.description
+        let photo = photos[indexPath.row]
+        cell.textLabel!.text = photo.title
         return cell
     }
 
@@ -70,6 +73,28 @@ class MasterViewController: UITableViewController {
 //        }
 //    }
 
+
+    // MARK: - Fetch data
+    func fetchRecents() {
+
+        recentsFetcher.fetchRecents { (response) in
+            DispatchQueue.main.async {
+                guard case .Recents(let photos) = response else {
+                    // Show error
+                    return
+                }
+                self.photos = photos
+
+                //let indexPath = IndexPath(row: 0, section: 0)
+                //self.tableView.insertRows(at: [indexPath], with: .automatic)
+
+                self.tableView.reloadData()
+
+            }
+        }
+
+
+    }
 
 }
 

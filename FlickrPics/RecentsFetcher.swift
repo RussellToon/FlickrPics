@@ -7,11 +7,11 @@ import Foundation
 
 
 public enum RecentsResponse {
-    case Recents(recents: [Recent])
+    case Recents(recents: [Photo])
     case Failed(error: RecentsError)
 }
 
-public struct Recent {
+public struct Photo {
     let id: String
     let title: String
     let thumbnailUrl: String
@@ -74,7 +74,7 @@ struct RecentsFetcher {
 
 fileprivate struct RecentsParser {
 
-    func recentsFrom(data: Data) -> [Recent]? {
+    func recentsFrom(data: Data) -> [Photo]? {
 
         let responseString = String(bytes: data, encoding: .utf8)
         let trimmedJson = String(responseString!.dropFirst(14).dropLast())
@@ -104,8 +104,8 @@ fileprivate struct RecentsParser {
         return extractedPhotos
     }
 
-   fileprivate func extractPhotos(photoDictionaries: [[String : Any]]) -> [Recent] {
-        var recents: [Recent] = []
+   fileprivate func extractPhotos(photoDictionaries: [[String : Any]]) -> [Photo] {
+        var recents: [Photo] = []
 
         for photoDictionary in photoDictionaries {
             guard let recent = extractPhoto(from: photoDictionary) else {
@@ -116,7 +116,7 @@ fileprivate struct RecentsParser {
         return recents
     }
 
-    fileprivate func extractPhoto(from photoDictionary: [String : Any]) -> Recent? {
+    fileprivate func extractPhoto(from photoDictionary: [String : Any]) -> Photo? {
         guard
             let id = photoDictionary["id"] as? String,
             let title = photoDictionary["title"] as? String,
@@ -126,7 +126,7 @@ fileprivate struct RecentsParser {
         }
         let big = photoDictionary["url_z"] as? String ?? ""
 
-        return Recent(id: id, title: title, thumbnailUrl: thumb, fullSizeUrl: big)
+        return Photo(id: id, title: title, thumbnailUrl: thumb, fullSizeUrl: big)
     }
 }
 
