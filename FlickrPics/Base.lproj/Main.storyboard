@@ -94,28 +94,27 @@
         <scene sceneID="smW-Zh-WAh">
             <objects>
                 <tableViewController title="Master" clearsSelectionOnViewWillAppear="NO" id="7bK-jq-Zjz" customClass="MasterViewController" customModule="FlickrPics" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="r7i-6Z-zg0">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="55" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="r7i-6Z-zg0">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" id="WCw-Qf-5nD" customClass="TableRowCell" customModule="FlickrPics" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                <rect key="frame" x="0.0" y="28" width="375" height="55"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="WCw-Qf-5nD" id="37f-cq-3Eg">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="54.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4th-BG-C45">
-                                            <rect key="frame" x="16" y="11.5" width="301.5" height="21"/>
+                                            <rect key="frame" x="16" y="12" width="300.5" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="jMn-Ii-5HZ">
-                                            <rect key="frame" x="331.5" y="0.0" width="43.5" height="43.5"/>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="jMn-Ii-5HZ">
+                                            <rect key="frame" x="330.5" y="0.0" width="44.5" height="44.5"/>
                                             <constraints>
-                                                <constraint firstAttribute="height" relation="lessThanOrEqual" constant="43.5" id="MAn-qA-fKL"/>
                                                 <constraint firstAttribute="width" secondItem="jMn-Ii-5HZ" secondAttribute="height" id="OVJ-qY-Mqa"/>
                                             </constraints>
                                         </imageView>
@@ -123,16 +122,16 @@
                                     <constraints>
                                         <constraint firstItem="jMn-Ii-5HZ" firstAttribute="top" secondItem="37f-cq-3Eg" secondAttribute="top" id="083-BF-9ze"/>
                                         <constraint firstAttribute="trailing" secondItem="jMn-Ii-5HZ" secondAttribute="trailing" id="CFI-IJ-gUz"/>
-                                        <constraint firstItem="4th-BG-C45" firstAttribute="centerY" secondItem="37f-cq-3Eg" secondAttribute="centerY" id="DTE-zU-atR"/>
                                         <constraint firstItem="jMn-Ii-5HZ" firstAttribute="leading" secondItem="4th-BG-C45" secondAttribute="trailing" constant="14" id="Gw7-4q-dip"/>
                                         <constraint firstItem="4th-BG-C45" firstAttribute="leading" secondItem="37f-cq-3Eg" secondAttribute="leadingMargin" id="sPm-e9-tXl"/>
                                         <constraint firstAttribute="bottom" secondItem="jMn-Ii-5HZ" secondAttribute="bottom" id="tMC-dh-2ZT"/>
+                                        <constraint firstItem="4th-BG-C45" firstAttribute="centerY" secondItem="37f-cq-3Eg" secondAttribute="centerY" id="zR0-T1-rAV"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <connections>
                                     <outlet property="thumbnail" destination="jMn-Ii-5HZ" id="pGd-zM-O1V"/>
-                                    <outlet property="title" destination="4th-BG-C45" id="y5Q-T5-4dP"/>
+                                    <outlet property="titleLabel" destination="4th-BG-C45" id="RUf-Ge-P97"/>
                                     <segue destination="vC3-pB-5Vb" kind="showDetail" identifier="showDetail" id="6S0-TO-JiA"/>
                                 </connections>
                             </tableViewCell>

@@ -52,7 +52,6 @@ struct RecentsFetcher {
                 completionHandler(RecentsResponse.Failed(error: .FailedToRetrieveResult)) // RJT: Improve errors
                 return
             }
-            //print("Recents:\n\(String(describing: recents))")
 
             completionHandler(RecentsResponse.Recents(recents: recents))
         }
@@ -97,8 +96,6 @@ fileprivate struct RecentsParser {
                 return nil
         }
 
-        //print("Response:\n\(responseDictionary)")
-
         let extractedPhotos = extractPhotos(photoDictionaries: photos)
 
         return extractedPhotos
@@ -133,17 +130,10 @@ fileprivate struct RecentsParser {
 
 fileprivate struct URLSessionConfigurationProvider {
 
-    static var userAgentString: String? = nil
-
     static var defaultMainConfiguration: URLSessionConfiguration {
         let configuration = URLSessionConfiguration.default
-        //configuration.httpShouldSetCookies = true
-        configuration.requestCachePolicy = NSURLRequest.CachePolicy.useProtocolCachePolicy //reloadRevalidatingCacheData
-        configuration.timeoutIntervalForRequest = 100
+        configuration.requestCachePolicy = NSURLRequest.CachePolicy.useProtocolCachePolicy
         //configuration.urlCache = URLCache.shared
-        if let userAgentString = userAgentString {
-            configuration.httpAdditionalHeaders = ["User-Agent" : userAgentString]
-        }
         return configuration
     }
 

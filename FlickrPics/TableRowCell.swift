@@ -7,7 +7,7 @@ import UIKit
 class TableRowCell: UITableViewCell {
 
 
-    @IBOutlet weak var title: UILabel!
+    @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var thumbnail: UIImageView!
 
 

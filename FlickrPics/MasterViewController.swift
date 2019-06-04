@@ -16,7 +16,7 @@ class MasterViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+
         if let split = splitViewController {
             let controllers = split.viewControllers
             detailViewController = (controllers[controllers.count-1] as! UINavigationController).topViewController as? DetailViewController
@@ -44,6 +44,7 @@ class MasterViewController: UITableViewController {
         }
     }
 
+
     // MARK: - Table View
 
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -57,10 +58,10 @@ class MasterViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! TableRowCell
+        cell.thumbnail.image = nil
 
         let photo = photos[indexPath.row]
-        cell.textLabel!.text = photo.title
-        //cell.thumbnail.image =
+        cell.titleLabel!.text = photo.title
         if let url = URL(string: photo.thumbnailUrl) {
             imageFetcher.downloadImage(from: url, for: cell.thumbnail)
         }
@@ -73,6 +74,7 @@ class MasterViewController: UITableViewController {
 
 
     // MARK: - Fetch data
+
     func fetchRecents() {
 
         recentsFetcher.fetchRecents { (response) in
@@ -83,15 +85,10 @@ class MasterViewController: UITableViewController {
                 }
                 self.photos = photos
 
-                //let indexPath = IndexPath(row: 0, section: 0)
-                //self.tableView.insertRows(at: [indexPath], with: .automatic)
-
                 self.tableView.reloadData()
 
             }
         }
-
-
     }
 
 }

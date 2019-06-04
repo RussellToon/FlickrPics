@@ -12,7 +12,7 @@ class DetailViewController: UIViewController {
     let imageFetcher = ImageFetcher()
 
     func configureView() {
-        // Update the user interface for the detail item.
+
         if let photo = detailItem {
             if let label = detailDescriptionLabel {
                 label.text = photo.title
@@ -26,13 +26,12 @@ class DetailViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+
         configureView()
     }
 
     var detailItem: Photo? {
         didSet {
-            // Update the view.
             configureView()
         }
     }
