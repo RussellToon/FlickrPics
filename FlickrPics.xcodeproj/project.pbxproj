@@ -14,6 +14,7 @@
 		4699150022A52C01001F9377 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 469914FF22A52C01001F9377 /* Assets.xcassets */; };
 		4699150322A52C01001F9377 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4699150122A52C01001F9377 /* LaunchScreen.storyboard */; };
 		4699150E22A52C01001F9377 /* FlickrPicsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4699150D22A52C01001F9377 /* FlickrPicsTests.swift */; };
+		4699151922A55A77001F9377 /* RecentsFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4699151822A55A77001F9377 /* RecentsFetcher.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,6 +39,7 @@
 		4699150922A52C01001F9377 /* FlickrPicsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FlickrPicsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4699150D22A52C01001F9377 /* FlickrPicsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlickrPicsTests.swift; sourceTree = "<group>"; };
 		4699150F22A52C01001F9377 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4699151822A55A77001F9377 /* RecentsFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentsFetcher.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,6 +88,7 @@
 				469914FF22A52C01001F9377 /* Assets.xcassets */,
 				4699150122A52C01001F9377 /* LaunchScreen.storyboard */,
 				4699150422A52C01001F9377 /* Info.plist */,
+				4699151822A55A77001F9377 /* RecentsFetcher.swift */,
 			);
 			path = FlickrPics;
 			sourceTree = "<group>";
@@ -200,6 +203,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4699151922A55A77001F9377 /* RecentsFetcher.swift in Sources */,
 				469914FB22A52BFF001F9377 /* DetailViewController.swift in Sources */,
 				469914F922A52BFF001F9377 /* MasterViewController.swift in Sources */,
 				469914F722A52BFF001F9377 /* AppDelegate.swift in Sources */,

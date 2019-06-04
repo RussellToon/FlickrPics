@@ -1,9 +1,5 @@
 //
-//  FlickrPicsTests.swift
-//  FlickrPicsTests
-//
-//  Created by Russell Toon on 03/06/2019.
-//  Copyright © 2019 Russell Toon. All rights reserved.
+//  Copyright © 2019 News UK. All rights reserved.
 //
 
 import XCTest
@@ -20,15 +16,24 @@ class FlickrPicsTests: XCTestCase {
     }
 
     func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-    }
 
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
+        let expectation = XCTestExpectation(description: "Correct result returned")
+
+        let fetcher = RecentsFetcher()
+
+        fetcher.fetchRecents(withCompletion: { (response) in
+
+            print("Response:\n\(response)")
+
+            guard case .Recents(let recents) = response else {
+                XCTFail()
+                return
+            }
+            XCTAssert(recents.count == 100)
+            expectation.fulfill()
+        })
+
+        wait(for: [expectation], timeout: 10.0)
     }
 
 }
