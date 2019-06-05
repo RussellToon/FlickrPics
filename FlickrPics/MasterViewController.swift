@@ -63,7 +63,10 @@ class MasterViewController: UITableViewController {
         let photo = photos[indexPath.row]
         cell.titleLabel!.text = photo.title
         if let url = URL(string: photo.thumbnailUrl) {
-            imageFetcher.downloadImage(from: url, for: cell.thumbnail)
+            imageFetcher.downloadImage(from: url) { [weak cell] (response) in
+                guard case .Success(let image) = response else { return }
+                cell?.thumbnail?.image = image
+            }
         }
         return cell
     }

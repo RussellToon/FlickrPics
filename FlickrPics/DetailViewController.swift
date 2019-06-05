@@ -19,7 +19,10 @@ class DetailViewController: UIViewController {
                 guard let url = URL(string: photo.fullSizeUrl) else {
                     return
                 }
-                imageFetcher.downloadImage(from: url, for: imageView)
+                imageFetcher.downloadImage(from: url) { [weak imageView] (response) in
+                    guard case .Success(let image) = response else { return }
+                    imageView?.image = image
+                }
             }
         }
     }
@@ -40,16 +43,35 @@ class DetailViewController: UIViewController {
 
 struct ImageFetcher {
 
-    func downloadImage(from url: URL, for imageView: UIImageView) {
+    public enum ImageResponse {
+        case Success(image: UIImage)
+        case Failure(error: ImageFetchError)
+    }
+
+    public enum ImageFetchError: Error {
+        case FailedToRetrieveImage
+        case FailedToDecodeImageFormat
+    }
+
+    public typealias ImageResponseHandler = (ImageResponse) -> Void
+
+    func downloadImage(from url: URL, withCompletion completionHandler: @escaping ImageResponseHandler) {
         getData(from: url) { data, response, error in
-            guard let data = data, error == nil else { return }
+            guard let data = data, error == nil else {
+                completionHandler(ImageResponse.Failure(error: .FailedToRetrieveImage))
+                return
+            }
             DispatchQueue.main.async() {
-                imageView.image = UIImage(data: data)
+                guard let image = UIImage(data: data) else {
+                    completionHandler(ImageResponse.Failure(error: .FailedToDecodeImageFormat))
+                    return
+                }
+                completionHandler(ImageResponse.Success(image: image))
             }
         }
     }
 
-    func getData(from url: URL, completion: @escaping (Data?, URLResponse?, Error?) -> ()) {
+    fileprivate func getData(from url: URL, completion: @escaping (Data?, URLResponse?, Error?) -> ()) {
         URLSession.shared.dataTask(with: url, completionHandler: completion).resume()
     }
 

@@ -3,20 +3,19 @@
 //
 
 import XCTest
+
 @testable import FlickrPics
 
 class FlickrPicsTests: XCTestCase {
 
 
-    func testExample() {
+    func testRecentsFetcher_callActualService_returnsResults() {
 
-        let expectation = XCTestExpectation(description: "Correct result returned")
+        let expectation = XCTestExpectation(description: "Result returned")
 
         let fetcher = RecentsFetcher()
 
         fetcher.fetchRecents(withCompletion: { (response) in
-
-            print("Response:\n\(response)")
 
             guard case .Recents(let recents) = response else {
                 XCTFail()
