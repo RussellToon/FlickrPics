@@ -75,15 +75,13 @@ fileprivate struct RecentsParser {
 
     func recentsFrom(data: Data) -> [Photo]? {
 
-        let responseString = String(bytes: data, encoding: .utf8)
-        let trimmedJson = String(responseString!.dropFirst(14).dropLast())
-        let json = trimmedJson.data(using: .utf8)
-
-
+        guard let responseString = String(bytes: data, encoding: .utf8) else { return nil }
+        let trimmedJson = String(responseString.dropFirst(14).dropLast())
+        guard let json = trimmedJson.data(using: .utf8) else { return nil }
 
         var response: Any? = nil
         do {
-            response = try JSONSerialization.jsonObject(with: json!, options:[])
+            response = try JSONSerialization.jsonObject(with: json, options:[])
         }
         catch {
             print("\(error)")
