@@ -8,7 +8,6 @@ import XCTest
 
 class FlickrPicsTests: XCTestCase {
 
-
     func testRecentsFetcher_callActualService_returnsResults() {
 
         let expectation = XCTestExpectation(description: "Result returned")
@@ -29,3 +28,4 @@ class FlickrPicsTests: XCTestCase {
     }
 
 }
+
