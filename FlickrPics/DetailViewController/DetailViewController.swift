@@ -9,8 +9,7 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var detailDescriptionLabel: UILabel!
     @IBOutlet weak var imageView: UIImageView!
 
-    let imageFetcher = ImageFetcher()
-
+    var imageFetcher: ImageFetching = ImageFetcher()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,7 +27,7 @@ class DetailViewController: UIViewController {
 
         if let photo = detailItem {
             if let label = detailDescriptionLabel {
-                label.text = photo.title
+                label.text = "\(photo.id) – \(photo.title.uppercased())"
                 guard let url = URL(string: photo.fullSizeUrl) else {
                     return
                 }
