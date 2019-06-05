@@ -19,6 +19,11 @@
 		4699151922A55A77001F9377 /* RecentsFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4699151822A55A77001F9377 /* RecentsFetcher.swift */; };
 		9C3BD42822A7C831004980F9 /* CodingTask.md in Resources */ = {isa = PBXBuildFile; fileRef = 9C3BD42722A7C831004980F9 /* CodingTask.md */; };
 		9C3BD42A22A7C882004980F9 /* CodingTask.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 9C3BD42922A7C882004980F9 /* CodingTask.pdf */; };
+		9C3BD42F22A7F3EF004980F9 /* DetailViewControllerInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C3BD42E22A7F3EF004980F9 /* DetailViewControllerInteractor.swift */; };
+		9C3BD43122A7F500004980F9 /* DetailViewControllerInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C3BD43022A7F500004980F9 /* DetailViewControllerInteractorTests.swift */; };
+		9C3BD43422A7F55B004980F9 /* ImageFetching.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C3BD43322A7F55B004980F9 /* ImageFetching.swift */; };
+		9C3BD43722A7F625004980F9 /* MockImageFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C3BD43522A7F5B7004980F9 /* MockImageFetcher.swift */; };
+		9C3BD43A22A7F921004980F9 /* MockDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C3BD43822A7F91E004980F9 /* MockDetailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +53,11 @@
 		4699151822A55A77001F9377 /* RecentsFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentsFetcher.swift; sourceTree = "<group>"; };
 		9C3BD42722A7C831004980F9 /* CodingTask.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = CodingTask.md; sourceTree = "<group>"; };
 		9C3BD42922A7C882004980F9 /* CodingTask.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = CodingTask.pdf; sourceTree = "<group>"; };
+		9C3BD42E22A7F3EF004980F9 /* DetailViewControllerInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewControllerInteractor.swift; sourceTree = "<group>"; };
+		9C3BD43022A7F500004980F9 /* DetailViewControllerInteractorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewControllerInteractorTests.swift; sourceTree = "<group>"; };
+		9C3BD43322A7F55B004980F9 /* ImageFetching.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageFetching.swift; sourceTree = "<group>"; };
+		9C3BD43522A7F5B7004980F9 /* MockImageFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockImageFetcher.swift; sourceTree = "<group>"; };
+		9C3BD43822A7F91E004980F9 /* MockDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockDetailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,16 +101,10 @@
 		469914F522A52BFF001F9377 /* FlickrPics */ = {
 			isa = PBXGroup;
 			children = (
-				469914F622A52BFF001F9377 /* AppDelegate.swift */,
-				469914F822A52BFF001F9377 /* MasterViewController.swift */,
-				469914FA22A52BFF001F9377 /* DetailViewController.swift */,
-				469914FC22A52C00001F9377 /* Main.storyboard */,
-				469914FF22A52C01001F9377 /* Assets.xcassets */,
-				4699150122A52C01001F9377 /* LaunchScreen.storyboard */,
-				4699150422A52C01001F9377 /* Info.plist */,
-				4699151822A55A77001F9377 /* RecentsFetcher.swift */,
-				4670D0E922A6866F000BA0E2 /* TableRowCell.swift */,
-				465B094B22A7D04D00B83B5D /* ImageFetcher.swift */,
+				9C3BD42D22A7F361004980F9 /* App Launch */,
+				9C3BD42C22A7F352004980F9 /* MasterView */,
+				9C3BD42B22A7F345004980F9 /* DetailView */,
+				9C3BD43222A7F542004980F9 /* ImageFetching */,
 			);
 			path = FlickrPics;
 			sourceTree = "<group>";
@@ -112,6 +116,49 @@
 				4699150F22A52C01001F9377 /* Info.plist */,
 			);
 			path = FlickrPicsTests;
+			sourceTree = "<group>";
+		};
+		9C3BD42B22A7F345004980F9 /* DetailView */ = {
+			isa = PBXGroup;
+			children = (
+				469914FA22A52BFF001F9377 /* DetailViewController.swift */,
+				9C3BD42E22A7F3EF004980F9 /* DetailViewControllerInteractor.swift */,
+				9C3BD43022A7F500004980F9 /* DetailViewControllerInteractorTests.swift */,
+				9C3BD43822A7F91E004980F9 /* MockDetailViewController.swift */,
+			);
+			path = DetailView;
+			sourceTree = "<group>";
+		};
+		9C3BD42C22A7F352004980F9 /* MasterView */ = {
+			isa = PBXGroup;
+			children = (
+				469914F822A52BFF001F9377 /* MasterViewController.swift */,
+				4670D0E922A6866F000BA0E2 /* TableRowCell.swift */,
+				4699151822A55A77001F9377 /* RecentsFetcher.swift */,
+			);
+			path = MasterView;
+			sourceTree = "<group>";
+		};
+		9C3BD42D22A7F361004980F9 /* App Launch */ = {
+			isa = PBXGroup;
+			children = (
+				469914F622A52BFF001F9377 /* AppDelegate.swift */,
+				469914FC22A52C00001F9377 /* Main.storyboard */,
+				469914FF22A52C01001F9377 /* Assets.xcassets */,
+				4699150122A52C01001F9377 /* LaunchScreen.storyboard */,
+				4699150422A52C01001F9377 /* Info.plist */,
+			);
+			path = "App Launch";
+			sourceTree = "<group>";
+		};
+		9C3BD43222A7F542004980F9 /* ImageFetching */ = {
+			isa = PBXGroup;
+			children = (
+				9C3BD43322A7F55B004980F9 /* ImageFetching.swift */,
+				465B094B22A7D04D00B83B5D /* ImageFetcher.swift */,
+				9C3BD43522A7F5B7004980F9 /* MockImageFetcher.swift */,
+			);
+			path = ImageFetching;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -217,6 +264,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9C3BD42F22A7F3EF004980F9 /* DetailViewControllerInteractor.swift in Sources */,
+				9C3BD43422A7F55B004980F9 /* ImageFetching.swift in Sources */,
 				4699151922A55A77001F9377 /* RecentsFetcher.swift in Sources */,
 				469914FB22A52BFF001F9377 /* DetailViewController.swift in Sources */,
 				4670D0EA22A6866F000BA0E2 /* TableRowCell.swift in Sources */,
@@ -230,7 +279,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9C3BD43122A7F500004980F9 /* DetailViewControllerInteractorTests.swift in Sources */,
+				9C3BD43A22A7F921004980F9 /* MockDetailViewController.swift in Sources */,
 				4699150E22A52C01001F9377 /* FlickrPicsTests.swift in Sources */,
+				9C3BD43722A7F625004980F9 /* MockImageFetcher.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -386,7 +438,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = F746269B3J;
-				INFOPLIST_FILE = FlickrPics/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/FlickrPics/App Launch/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -404,7 +456,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = F746269B3J;
-				INFOPLIST_FILE = FlickrPics/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/FlickrPics/App Launch/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

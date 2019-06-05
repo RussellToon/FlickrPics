@@ -2,7 +2,7 @@ We've built a simple app based on Apple's XCode template to show the most recent
 
 We want to add 2 features to the `DetailsViewController` taking a test driven development (TDD) approach.
 
-# Task: Preparation – Add tests to `DetailViewController`
+# Task: Preparation – Add tests of `DetailViewController`
 
 `DetailViewController` currently has no tests at all. Add tests of `DetailViewController` to validate to following…
 
