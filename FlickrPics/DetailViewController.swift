@@ -9,12 +9,10 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var detailDescriptionLabel: UILabel!
     @IBOutlet weak var imageView: UIImageView!
 
-    let imageFetcher = ImageFetcher()
-
+    var imageFetcher: ImageFetching!
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
         configureView()
     }
 
@@ -33,8 +31,19 @@ class DetailViewController: UIViewController {
                     return
                 }
                 imageFetcher.downloadImage(from: url) { [weak imageView] (response) in
-                    guard case .Success(let image) = response else { return }
-                    imageView?.image = image
+
+                    switch response {
+                    case .Success(let image):
+                        imageView?.image = image
+                    case .Failure(let error) where error == .FailedToRetrieveImage:
+                            imageView?.image = UIImage(named: "failedDowload")
+                    case .Failure(let error) where error == .FailedToDecodeImageFormat:
+                            break
+                    default:
+                        break
+                        }
+                    }
+
                 }
             }
         }
