@@ -8,7 +8,7 @@ class MasterViewController: UITableViewController {
 
     fileprivate var detailViewController: DetailViewController? = nil
     fileprivate var photos = [Photo]()
-    fileprivate let imageFetcher = ImageFetcher()
+    fileprivate let imageFetcher = DefaultImageFetcher()
 
 
     fileprivate let recentsFetcher = RecentsFetcher()

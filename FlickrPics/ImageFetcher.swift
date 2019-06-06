@@ -4,21 +4,23 @@
 
 import UIKit
 
+public enum ImageResponse {
+    case Success(image: UIImage)
+    case Failure(error: ImageFetchError)
+}
 
+public enum ImageFetchError: Error {
+    case FailedToRetrieveImage
+    case FailedToDecodeImageFormat
+}
 
-struct ImageFetcher {
+public typealias ImageResponseHandler = (ImageResponse) -> Void
 
-    public enum ImageResponse {
-        case Success(image: UIImage)
-        case Failure(error: ImageFetchError)
-    }
+protocol ImageFetcher {
+    func downloadImage(from url: URL, withCompletion completionHandler: @escaping ImageResponseHandler)
+}
 
-    public enum ImageFetchError: Error {
-        case FailedToRetrieveImage
-        case FailedToDecodeImageFormat
-    }
-
-    public typealias ImageResponseHandler = (ImageResponse) -> Void
+struct DefaultImageFetcher: ImageFetcher {
 
     func downloadImage(from url: URL, withCompletion completionHandler: @escaping ImageResponseHandler) {
         getData(from: url) { data, response, error in
